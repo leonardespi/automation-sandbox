@@ -1,6 +1,26 @@
 /* styles.css */
 
 /* ===========================
+   VARIABLES & THEME
+   =========================== */
+:root {
+  --zurich-blue: #003399;
+  --zurich-hover: #002266;
+  --zurich-light-blue: #E6F0FF;
+  --text-main: #333333;
+  --text-muted: #666666;
+  --bg-body: #F4F7FA;
+  --bg-surface: #FFFFFF;
+  --border-color: #E0E0E0;
+  --success: #2E7D32;
+  --success-bg: #E8F5E9;
+  --error: #C62828;
+  --error-bg: #FFEBEE;
+  --radius: 8px;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* ===========================
    RESET & BASE
    =========================== */
 
@@ -16,12 +36,13 @@ html {
 }
 
 body {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    line-height: 2.5;
-    color: #000;
-    background-color: #fff;
-    padding: 1rem;
-    max-width: 1200px;
+    /* Zurich Standard Font Stack */
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-main);
+    background-color: var(--bg-body);
+    padding: 2rem 1rem;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -30,128 +51,80 @@ body {
    =========================== */
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
-    margin-bottom: 0.75rem;
-    line-height: 1.2;
+    font-weight: 700;
+    color: var(--zurich-blue);
+    line-height: 1.25;
 }
 
 h1 {
-    font-size: 2rem;
-    border-bottom: 2px solid #000;
-    padding-bottom: 0.5rem;
+    font-size: 2.5rem;
     margin-bottom: 0.5rem;
+    border-bottom: none;
+    color: var(--zurich-blue);
 }
 
 h2 {
-    font-size: 1.5rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #000;
-    padding-bottom: 0.25rem;
+    font-size: 1.75rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    color: var(--text-main);
 }
 
 h3 {
-    font-size: 1.25rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--zurich-blue);
 }
 
 h4 {
     font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-}
-
-h5 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
 }
 
 p {
-    margin-bottom: 0.75rem;
-}
-
-.subtitle {
-    font-size: 1rem;
     margin-bottom: 1rem;
+    text-align: justify; /* Consistent with your request */
 }
 
 /* ===========================
-   LAYOUT
+   LAYOUT & STRUCTURE
    =========================== */
 
 header {
-    margin-bottom: 2rem;
-}
-
-nav {
-    margin-bottom: 2rem;
-    padding: 1rem;
-    border: 1px solid #000;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-nav li {
-    display: inline;
-}
-
-main {
-    margin-bottom: 2rem;
-}
-
-section {
     margin-bottom: 3rem;
+    text-align: center;
 }
 
-article {
-    margin-bottom: 2rem;
-}
-
-footer {
-    margin-top: 3rem;
-    padding-top: 1rem;
-    border-top: 2px solid #000;
-}
-
-footer ul {
-    list-style: disc;
-    margin-left: 1.5rem;
-    margin-bottom: 1rem;
+header p {
+    text-align: center;
+    color: var(--text-muted);
 }
 
 /* ===========================
-   LINKS
-   =========================== */
-
-a {
-    color: #000;
-    text-decoration: underline;
-}
-
-a:hover,
-a:focus {
-    text-decoration: none;
-    outline: 2px solid #000;
-    outline-offset: 2px;
-}
-
-/* ===========================
-   DEMO BOXES
+   DEMO BOXES (THE CARDS)
    =========================== */
 
 .demo-box {
-    border: 1px solid #000;
-    padding: 1rem;
-    margin-bottom: 1.5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease;
 }
 
-.demo-box h4 {
-    margin-top: 0;
+.demo-box:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
 }
 
 /* ===========================
@@ -161,54 +134,51 @@ a:focus {
 form {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
+    max-width: 500px;
 }
 
 label {
-    font-weight: bold;
-    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-main);
     margin-bottom: 0.25rem;
+    display: block;
 }
 
 input[type="text"],
 input[type="password"],
 input[type="email"],
-select {
+input[type="date"],
+select,
+input[type="file"] {
     font-family: inherit;
     font-size: 1rem;
-    padding: 0.5rem;
-    border: 1px solid #000;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Slightly rounded inputs */
     background-color: #fff;
-    color: #000;
     width: 100%;
-    max-width: 400px;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="email"]:focus,
-select:focus {
-    outline: 2px solid #000;
-    outline-offset: 2px;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-    width: 1rem;
-    height: 1rem;
-    margin-right: 0.5rem;
-    vertical-align: middle;
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--zurich-blue);
+    box-shadow: 0 0 0 3px var(--zurich-light-blue);
 }
 
 fieldset {
-    border: 1px solid #000;
-    padding: 0.75rem;
-    margin-bottom: 0.75rem;
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
 }
 
 legend {
-    font-weight: bold;
+    font-weight: 600;
     padding: 0 0.5rem;
+    color: var(--zurich-blue);
 }
 
 /* ===========================
@@ -217,404 +187,388 @@ legend {
 
 button {
     font-family: inherit;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border: 2px solid #000;
-    background-color: #fff;
-    color: #000;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    background-color: var(--zurich-blue);
+    color: #fff;
     cursor: pointer;
+    border-radius: 50px; /* Pill shaped buttons */
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
+    transition: all 0.2s ease;
 }
 
 button:hover:not(:disabled) {
-    background-color: #000;
-    color: #fff;
+    background-color: var(--zurich-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,51,153, 0.2);
 }
 
 button:disabled {
-    opacity: 0.5;
+    background-color: #BDC3C7;
     cursor: not-allowed;
+    opacity: 0.7;
 }
 
 /* ===========================
-   TABLES
+   LINKS
+   =========================== */
+
+a {
+    color: var(--zurich-blue);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+}
+
+a:hover {
+    border-bottom-color: var(--zurich-blue);
+}
+
+/* ===========================
+   CODE & DETAILS
+   =========================== */
+
+details {
+    margin-top: 1.5rem;
+    background: #f8f9fa;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+}
+
+summary {
+    font-weight: 600;
+    cursor: pointer;
+    padding: 1rem;
+    color: var(--zurich-blue);
+    user-select: none;
+}
+
+summary:hover {
+    background-color: var(--zurich-light-blue);
+    border-radius: var(--radius) var(--radius) 0 0;
+}
+
+/* Code Blocks Styling */
+pre {
+    padding: 1rem;
+    background: transparent;
+    overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: 0.9rem;
+    color: #444;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Inline code inside normal text */
+p code, li code {
+    background: var(--zurich-light-blue);
+    color: var(--zurich-blue);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: 0.9em;
+}
+
+/* Fix for code block backgrounds */
+pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+}
+
+/* ===========================
+   COMPONENTS: ALERTS
+   =========================== */
+
+.alert {
+    padding: 1rem;
+    border-radius: var(--radius); 
+    margin-bottom: 1rem;
+    font-weight: 500;
+    border: 1px solid transparent;
+}
+
+.alert-success {
+    background-color: var(--success-bg);
+    color: var(--success);
+    border-color: #C8E6C9;
+}
+
+.alert-error {
+    background-color: var(--error-bg);
+    color: var(--error);
+    border-color: #FFCDD2;
+}
+
+.spinner {
+    padding: 1rem;
+    background: #FAFAFA;
+    border: 1px dashed #ccc;
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+/* ===========================
+   COMPONENTS: TABLES
    =========================== */
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 1rem;
+    font-size: 0.95rem;
 }
 
 th, td {
-    border: 1px solid #000;
-    padding: 0.5rem;
+    padding: 1rem;
     text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    border-left: none;
+    border-right: none;
+    border-top: none;
 }
 
 th {
-    font-weight: bold;
-    background-color: #fff;
+    font-weight: 600;
+    color: var(--zurich-blue);
+    background-color: #FAFAFA;
+}
+
+tr:hover td {
+    background-color: var(--zurich-light-blue);
 }
 
 /* ===========================
-   LISTS
+   COMPONENTS: TABS & ACCORDION
    =========================== */
 
-ul, ol {
-    margin-left: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-ul[data-testid] {
-    list-style: disc;
-}
-
-ol[data-testid] {
-    list-style: decimal;
-}
-
-/* ===========================
-   ALERTS & SPINNERS
-   =========================== */
-
-.alert {
-    padding: 0.75rem;
-    border: 2px solid #2e2e2e;   
-    margin-bottom: 1rem;
-}
-
-.alert-success {
-    border-style: solid;
-    border-color: #8cc57e;         
-    color: #8cc57e;
-}
-
-.alert-error {
-    border-style: dashed;
-    border-color: #c46666;    
-    color: #c46666      
-}
-
-.spinner {
-    padding: 0.75rem;
-    border: 2px solid #2e2e2e;     
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-/* ===========================
-   MENU & SUBMENU
-   =========================== */
-
-.menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.menu > li {
-    position: relative;
-    display: inline-block;
-}
-
-.menu-trigger {
-    margin: 0;
-}
-
-.submenu {
-    list-style: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    border: 1px solid #000;
-    background-color: #fff;
-    padding: 0.5rem;
-    min-width: 150px;
-    z-index: 100;
-}
-
-.submenu li {
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.submenu li:last-child {
-    margin-bottom: 0;
-}
-
-/* ===========================
-   TABS
-   =========================== */
-
+/* Tabs */
 .tabs {
     display: flex;
     gap: 0.5rem;
-    border-bottom: 2px solid #000;
-    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
 }
 
 .tabs button {
-    border: 2px solid #000;
-    border-bottom: none;
-    background-color: #fff;
+    background: transparent;
+    color: var(--text-muted);
+    border: none;
+    border-radius: 0;
+    border-bottom: 3px solid transparent;
     margin: 0;
-    margin-bottom: -2px;
+    padding: 0.75rem 1.5rem;
+    box-shadow: none;
+}
+
+.tabs button:hover {
+    color: var(--zurich-blue);
+    background: transparent;
+    transform: none;
+    box-shadow: none;
 }
 
 .tabs button[aria-selected="true"] {
-    background-color: #000;
-    color: #fff;
+    color: var(--zurich-blue);
+    border-bottom-color: var(--zurich-blue);
+    font-weight: 700;
 }
 
 [role="tabpanel"] {
-    padding: 1rem;
-    border: 1px solid #000;
-    border-top: 1px solid #000;
+    padding: 1rem 0;
+    border: none;
+    animation: fadeIn 0.3s ease;
 }
 
-/* ===========================
-   ACCORDION
-   =========================== */
-
-.accordion {
-    margin-bottom: 1rem;
-}
-
+/* Accordion */
 .accordion-trigger {
     width: 100%;
     text-align: left;
+    background: #f8f9fa;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
     margin-bottom: 0.5rem;
+    box-shadow: none;
 }
 
 .accordion-trigger[aria-expanded="true"] {
-    background-color: #000;
+    background-color: var(--zurich-blue);
     color: #fff;
+    border-color: var(--zurich-blue);
 }
 
 .accordion > div[id] {
     padding: 1rem;
-    border: 1px solid #000;
-    margin-bottom: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-top: none;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 0 0 4px 4px;
 }
 
 /* ===========================
-   MODAL
+   COMPONENTS: NAVIGATION & MENUS
    =========================== */
-
-#modal-root {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.modal-content {
-    background-color: #fff;
-    border: 2px solid #000;
-    padding: 2rem;
-    max-width: 500px;
-    width: 90%;
-}
 
 /* ===========================
-   DATE PICKER
+   COMPONENTS: NAVIGATION & MENUS
    =========================== */
 
-.date-picker {
-    border: 1px solid #000;
+nav {
+    border: none;
+    background: var(--bg-surface);
     padding: 1rem;
-    max-width: 300px;
-    margin-top: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-radius: var(--radius);
 }
 
-.date-picker-header {
+/* Fix: Remove bullets and setup layout */
+ul.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.75rem;
 }
 
-.date-picker-header button {
-    padding: 0.25rem 0.5rem;
+/* Fix: Create a positioning context for the dropdown */
+ul.menu > li {
+    position: relative;
+    list-style: none; /* Double check to remove bullet */
+}
+
+.menu-trigger {
+    margin: 0; /* Remove default button margins */
+}
+
+/* Submenu Styling */
+.submenu {
+    position: absolute;
+    top: 110%; /* Push it slightly down from the button */
+    left: 0;
+    border: 1px solid var(--border-color);
+    background-color: #fff;
+    padding: 0.5rem 0;
+    min-width: 200px;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: var(--radius);
+    list-style: none; /* Remove bullets from submenu too */
+}
+
+.submenu li {
+    display: block;
     margin: 0;
 }
 
-.date-picker-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0.25rem;
+.submenu li a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--text-main);
+    font-weight: 500;
+    border-bottom: none;
+    transition: background 0.2s;
 }
 
-.date-picker-grid button {
-    padding: 0.5rem;
-    margin: 0;
-    font-size: 0.875rem;
-}
-
-/* ===========================
-   SLIDER
-   =========================== */
-
-input[type="range"] {
-    width: 100%;
-    max-width: 300px;
-}
-
-output {
-    display: inline-block;
-    margin-left: 0.5rem;
-    font-weight: bold;
+.submenu li a:hover {
+    background-color: var(--zurich-light-blue);
+    color: var(--zurich-blue);
 }
 
 /* ===========================
-   DRAG & DROP
+   COMPONENTS: DRAG & DROP
    =========================== */
 
 .drag-drop-container {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 1.5rem;
 }
 
 .drag-source,
 .drag-target {
     flex: 1;
-    border: 1px solid #000;
+    background: #FAFAFA;
+    border: 2px dashed #ccc;
+    border-radius: var(--radius);
     padding: 1rem;
     min-height: 200px;
 }
 
-.drag-source ul,
-.drag-target ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
 .drag-source li,
 .drag-target li {
-    padding: 0.5rem;
-    border: 1px solid #000;
+    padding: 0.75rem;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
     margin-bottom: 0.5rem;
-    cursor: move;
+    cursor: grab;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
 .drag-source li:hover,
 .drag-target li:hover {
-    background-color: #000;
-    color: #fff;
-}
-
-.drag-over {
-    background-color: #000;
-    color: #fff;
+    border-color: var(--zurich-blue);
+    color: var(--zurich-blue);
 }
 
 /* ===========================
-   FILE INPUT
+   COMPONENTS: MODAL
    =========================== */
 
-input[type="file"] {
-    font-family: inherit;
-    font-size: 1rem;
-    padding: 0.5rem;
-    border: 1px solid #000;
+#modal-root {
+    background-color: rgba(0, 0, 0, 0.5); /* Modern dimming */
+    backdrop-filter: blur(2px);
+}
+
+.modal-content {
     background-color: #fff;
-    max-width: 400px;
+    border: none;
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 500px;
+}
+
+.modal-content h3 {
+    margin-top: 0;
 }
 
 /* ===========================
-   IFRAME
+   UTILITIES & FOOTER
    =========================== */
 
-iframe {
-    width: 100%;
-    height: 200px;
-    border: 1px solid #000;
-    margin-bottom: 1rem;
+.date-picker {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1rem;
+    background: #fff;
 }
 
-/* ===========================
-   CANVAS
-   =========================== */
-
-canvas {
-    border: 1px solid #000;
-    display: block;
-    margin-bottom: 1rem;
+footer {
+    border-top: 1px solid var(--border-color);
+    margin-top: 4rem;
 }
 
-/* ===========================
-   DETAILS / SUMMARY
-   =========================== */
-
-details {
-    margin-top: 1rem;
-    border: 1px solid #000;
-    padding: 0.5rem;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
-
-summary {
-    font-weight: bold;
-    cursor: pointer;
-    user-select: none;
-}
-
-summary:hover {
-    text-decoration: underline;
-}
-
-details pre {
-    margin-top: 0.5rem;
-    padding: 0.5rem;
-    border: 1px solid #000;
-    overflow-x: auto;
-    white-space: pre-wrap;
-    font-size: 0.875rem;
-}
-
-/* ===========================
-   UTILITIES
-   =========================== */
-
-.note {
-    font-size: 0.875rem;
-    margin-bottom: 0.5rem;
-}
-
-[hidden] {
-    display: none !important;
-}
-
-/* ===========================
-   FOCUS STYLES
-   =========================== */
-
-
 
 /* ===========================
    RESPONSIVE
    =========================== */
 
 @media (max-width: 768px) {
-    body {
-        padding: 0.5rem;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    h2 {
-        font-size: 1.25rem;
-    }
-
-    nav ul
+    body { padding: 1rem; }
+    h1 { font-size: 2rem; }
+    .drag-drop-container { flex-direction: column; }
+    .demo-box { padding: 1.5rem; }
+}
